@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTuriasData", "DTuriasData\DTuriasData.csproj", "{F6E60F0F-C011-460C-9BB0-1FF57013C14B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTuriasConnectorTwitter", "DTuriasConnectorTwitter\DTuriasConnectorTwitter.csproj", "{76001FDF-CD28-4B3D-BECD-698D1D2824B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTuriasBase", "DTuriasBase\DTuriasBase.csproj", "{3341E41E-87C2-4BC9-8CEB-FA3848D3D19F}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DTuriasNLP", "DTuriasNLP\DTuriasNLP.pyproj", "{75248E49-BBF0-43D9-9678-53D2B1695409}"
+EndProject
+Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "DTuriasDescriptive", "DTuriasDescriptive\DTuriasDescriptive.rxproj", "{F6DF6FB2-8868-40CF-98EE-0B98FC28A594}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DTuriasSentiment", "DTuriasSentiment\DTuriasSentiment.pyproj", "{E08706F2-1B61-4307-9770-0969FC7E35A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTuriasViewer", "DTuriasViewer\DTuriasViewer.csproj", "{20261667-D8AB-427A-9DB5-39B7E71633C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6E60F0F-C011-460C-9BB0-1FF57013C14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E60F0F-C011-460C-9BB0-1FF57013C14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E60F0F-C011-460C-9BB0-1FF57013C14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E60F0F-C011-460C-9BB0-1FF57013C14B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76001FDF-CD28-4B3D-BECD-698D1D2824B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76001FDF-CD28-4B3D-BECD-698D1D2824B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76001FDF-CD28-4B3D-BECD-698D1D2824B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76001FDF-CD28-4B3D-BECD-698D1D2824B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3341E41E-87C2-4BC9-8CEB-FA3848D3D19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3341E41E-87C2-4BC9-8CEB-FA3848D3D19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3341E41E-87C2-4BC9-8CEB-FA3848D3D19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3341E41E-87C2-4BC9-8CEB-FA3848D3D19F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75248E49-BBF0-43D9-9678-53D2B1695409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75248E49-BBF0-43D9-9678-53D2B1695409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DF6FB2-8868-40CF-98EE-0B98FC28A594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DF6FB2-8868-40CF-98EE-0B98FC28A594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DF6FB2-8868-40CF-98EE-0B98FC28A594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DF6FB2-8868-40CF-98EE-0B98FC28A594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
