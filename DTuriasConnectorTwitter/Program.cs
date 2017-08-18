@@ -1,25 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tweetinvi;
+﻿using DTuriasCore.Models;
+using DTuriasConnectorTwitter.Http;
+using DTuriasConnectorTwitter.Tasks;
+using log4net;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Threading;
+using System.Reflection;
+using log4net.Config;
 
 namespace DTuriasConnectorTwitter
 {
     class Program
     {
+        static ILog _logger = LogManager.GetLogger(typeof(Program));
+        static Connector connector;
+
         static void Main(string[] args)
         {
-            // Set up your credentials (https://apps.twitter.com)
-            string consumerKey = "qvCHrYNQ8O8ptdqmc87Yoc9wo";
-            string consumerSecret = "oFIYsNH2uBmmaAV4saXWia8eUvmBcV16CLV6u19zNt5IYIrIeA";
-            string accessToken = "870224367510278144-eFdOf9JfIgfQu14v6j5B0pgEFRiuykP";
-            string accessTokenSecret = "EohoGqPtxlXY4WTc6S6eDs8Hofz6uWEbvJZG8B0l4vQ2c";
-            Auth.SetUserCredentials(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 
+            connector = new Connector("http://localhost:54780");
+            Manager manager;
+
+            using (var fileProperties = new StreamReader(new FileStream("properties.json", FileMode.Open)))
+            {
+                manager = new Manager(fileProperties);              
+            }
+
+            using (var fileQueries = new StreamReader(new FileStream("queries.json", FileMode.Open)))
+            {
+                var search = JsonConvert.DeserializeObject<Config.Queries>(fileQueries.ReadToEnd());
+
+                var messageTask = new MessageTask();
+                Thread messageTaskThread = new Thread(new ThreadStart(messageTask.run));
+                messageTaskThread.Start();
+
+                var placeTask = new PlaceTask();
+                Thread placeTaskThread = new Thread(new ThreadStart(placeTask.run));
+                placeTaskThread.Start();
+
+                var trendTask = new TrendTask();
+                Thread trendTaskThread = new Thread(new ThreadStart(trendTask.run));
+                trendTaskThread.Start();
+
+                var userTask = new UserTask();
+                Thread userTaskThread = new Thread(new ThreadStart(userTask.run));
+                userTaskThread.Start();
+
+
+                
+            }
             // Publish the Tweet "Hello World" on your Timeline
-            Tweet.PublishTweet("Hello World!");
+            //Tweet.PublishTweet("Hello World!");
+            TodoItem i = new TodoItem()
+            {
+                Name = "VVV",
+                IsComplete = false
+            };
+
+            //_logger.Info(JsonConvert.SerializeObject(i));
+            connector.CreateItem(i);
+ 
+
+            Console.ReadLine();
         }
+
+
+
     }
 }

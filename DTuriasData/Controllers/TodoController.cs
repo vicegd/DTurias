@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DTuriasData.Models;
+using DTuriasData.Context;
+using DTuriasCore.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,7 +43,7 @@ namespace DTuriasData.Controllers
 
         [HttpPost]
         public IActionResult Create([FromBody] TodoItem item)
-        {
+        {            
             if (item == null)
             {
                 return BadRequest();

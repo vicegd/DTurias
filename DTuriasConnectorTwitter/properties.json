@@ -1,0 +1,15 @@
+﻿{
+  "user": {
+    "id": "1",
+    "name": "eturias",
+    "twitter": {
+      "consumerKey": "qvCHrYNQ8O8ptdqmc87Yoc9wo",
+      "consumerSecret": "oFIYsNH2uBmmaAV4saXWia8eUvmBcV16CLV6u19zNt5IYIrIeA",
+      "token": "870224367510278144-eFdOf9JfIgfQu14v6j5B0pgEFRiuykP",
+      "tokenSecret": "EohoGqPtxlXY4WTc6S6eDs8Hofz6uWEbvJZG8B0l4vQ2c"
+    }
+  },
+  "database": {
+    "url": "http://localhost:4001/api/"
+  }
+}

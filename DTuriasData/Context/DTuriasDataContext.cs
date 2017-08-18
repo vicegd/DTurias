@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using DTuriasCore.Models;
 
-namespace DTuriasData.Models
+namespace DTuriasData.Context
 {
     public class DTuriasDataContext : DbContext
     {

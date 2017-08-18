@@ -1,0 +1,73 @@
+﻿{
+  "messagesToSearch": [
+    {
+      "queries": [
+        { "query": "watch movie :)" },
+        { "query": "watch movie :(" },
+        { "query": "movie :(" },
+        { "query": "movie :(" },
+        { "query": "Movie premiere :)" },
+        { "query": "Movie premiere :(" },
+        { "query": "series :)" },
+        { "query": "TV show :)" },
+        { "query": "series :(" },
+        { "query": "TV show :(" },
+        { "query": "bad movie" },
+        { "query": "bad film" },
+        { "query": "ruin film" },
+        { "query": "recommend watch" },
+        { "query": "suggest watch" },
+        { "query": "watch" },
+        { "query": "watch show" },
+        { "query": "watch series" },
+        { "query": "worst movie" },
+        { "query": "cinema" }
+      ],
+      "startIn": 0,
+      "endsIn": 864000000,
+      "every": 300000,
+      "location": {
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "radius": 0.0
+      },
+      "resultType": "MIXED",
+      "language": "EN",
+      "since": "2014-01-01",
+      "until": "2018-01-01",
+      "maxResultsPerCycle": 30
+    }
+  ],
+  "placesToSearch": [
+    {
+      "text": "New York",
+      "startIn": 0,
+      "endsIn": 9999999999,
+      "every": 300000,
+      "location": {
+        "latitude": 40.815568,
+        "longitude": -73.943447,
+        "radius": 0
+      },
+      "granularity": "CITY",
+      "maxResultsPerCycle": 10
+    }
+  ],
+  "usersToSearch": [
+    {
+      "startIn": 0,
+      "endsIn": 9999999999,
+      "every": 300000,
+      "text": "New York",
+      "maxResultsPerCycle": 8
+    }
+  ],
+  "trendsToSearch": [
+    {
+      "woeid": 23424950,
+      "startIn": 0,
+      "endsIn": 9999999999,
+      "every": 300000
+    }
+  ]
+}
