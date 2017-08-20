@@ -2,26 +2,8 @@
   "messagesToSearch": [
     {
       "queries": [
-        { "query": "watch movie :)" },
-        { "query": "watch movie :(" },
-        { "query": "movie :(" },
-        { "query": "movie :(" },
-        { "query": "Movie premiere :)" },
-        { "query": "Movie premiere :(" },
-        { "query": "series :)" },
-        { "query": "TV show :)" },
-        { "query": "series :(" },
-        { "query": "TV show :(" },
-        { "query": "bad movie" },
-        { "query": "bad film" },
-        { "query": "ruin film" },
-        { "query": "recommend watch" },
-        { "query": "suggest watch" },
-        { "query": "watch" },
-        { "query": "watch show" },
-        { "query": "watch series" },
-        { "query": "worst movie" },
-        { "query": "cinema" }
+        { "query": "hotel" },
+        { "query": "hostal" }
       ],
       "startIn": 0,
       "endsIn": 864000000,
@@ -35,7 +17,7 @@
       "language": "EN",
       "since": "2014-01-01",
       "until": "2018-01-01",
-      "maxResultsPerCycle": 30
+      "maxResultsPerCycle": 5
     }
   ],
   "placesToSearch": [

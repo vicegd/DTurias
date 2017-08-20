@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using DTuriasData.Context;
+using DTuriasData.Models;
 using DTuriasCore.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,9 +11,9 @@ namespace DTuriasData.Controllers
     [Route("api/[controller]")]
     public class TodoController : Controller
     {
-        private readonly DTuriasDataContext _context;
+        private readonly DataContext _context;
 
-        public TodoController(DTuriasDataContext context)
+        public TodoController(DataContext context)
         {
             _context = context;
 

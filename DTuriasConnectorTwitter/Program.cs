@@ -33,11 +33,16 @@ namespace DTuriasConnectorTwitter
             {
                 var search = JsonConvert.DeserializeObject<Config.Queries>(fileQueries.ReadToEnd());
 
-                var messageTask = new MessageTask();
-                Thread messageTaskThread = new Thread(new ThreadStart(messageTask.run));
-                messageTaskThread.Start();
+                foreach (var message in search.messagesToSearch)
+                {
+                    var messageTask = new MessageTask(manager, message);
+                    Thread messageTaskThread = new Thread(new ThreadStart(messageTask.Run));
+                    messageTaskThread.Start();
+                }
 
-                var placeTask = new PlaceTask();
+
+
+                /*var placeTask = new PlaceTask();
                 Thread placeTaskThread = new Thread(new ThreadStart(placeTask.run));
                 placeTaskThread.Start();
 
@@ -47,21 +52,21 @@ namespace DTuriasConnectorTwitter
 
                 var userTask = new UserTask();
                 Thread userTaskThread = new Thread(new ThreadStart(userTask.run));
-                userTaskThread.Start();
+                userTaskThread.Start();*/
 
 
                 
             }
             // Publish the Tweet "Hello World" on your Timeline
             //Tweet.PublishTweet("Hello World!");
-            TodoItem i = new TodoItem()
+            /*TodoItem i = new TodoItem()
             {
                 Name = "VVV",
                 IsComplete = false
             };
 
             //_logger.Info(JsonConvert.SerializeObject(i));
-            connector.CreateItem(i);
+            connector.CreateItem(i);*/
  
 
             Console.ReadLine();

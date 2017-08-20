@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTuriasData", "DTuriasData\DTuriasData.csproj", "{F6E60F0F-C011-460C-9BB0-1FF57013C14B}"
 EndProject
@@ -11,11 +11,11 @@ Project("{DA7A21FA-8162-4350-AD77-A8D1B671F3ED}") = "DTuriasDescriptive", "DTuri
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DTuriasSentiment", "DTuriasSentiment\DTuriasSentiment.pyproj", "{E08706F2-1B61-4307-9770-0969FC7E35A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTuriasViewer", "DTuriasViewer\DTuriasViewer.csproj", "{20261667-D8AB-427A-9DB5-39B7E71633C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTuriasCore", "DTuriasCore\DTuriasCore.csproj", "{278B0574-9694-4B52-8C8E-C81D4B38449E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTuriasCore", "DTuriasCore\DTuriasCore.csproj", "{278B0574-9694-4B52-8C8E-C81D4B38449E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTuriasConnectorTwitter", "DTuriasConnectorTwitter\DTuriasConnectorTwitter.csproj", "{132E22F5-532C-45BB-A837-7893D77560BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTuriasConnectorTwitter", "DTuriasConnectorTwitter\DTuriasConnectorTwitter.csproj", "{132E22F5-532C-45BB-A837-7893D77560BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTuriasViewer", "DTuriasViewer\DTuriasViewer.csproj", "{72D713BE-8A4A-4422-B7AA-64126F037BFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E08706F2-1B61-4307-9770-0969FC7E35A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20261667-D8AB-427A-9DB5-39B7E71633C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{278B0574-9694-4B52-8C8E-C81D4B38449E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{278B0574-9694-4B52-8C8E-C81D4B38449E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{278B0574-9694-4B52-8C8E-C81D4B38449E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,8 +45,15 @@ Global
 		{132E22F5-532C-45BB-A837-7893D77560BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{132E22F5-532C-45BB-A837-7893D77560BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{132E22F5-532C-45BB-A837-7893D77560BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D713BE-8A4A-4422-B7AA-64126F037BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D713BE-8A4A-4422-B7AA-64126F037BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D713BE-8A4A-4422-B7AA-64126F037BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D713BE-8A4A-4422-B7AA-64126F037BFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A16859E3-D6EC-4F3A-973B-8FDC7A3B0944}
 	EndGlobalSection
 EndGlobal
