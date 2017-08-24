@@ -14,14 +14,11 @@ namespace DTuriasConnectorTwitter
     class Program
     {
         static ILog _logger = LogManager.GetLogger(typeof(Program));
-        static Connector connector;
 
         static void Main(string[] args)
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-
-            connector = new Connector("http://localhost:54780");
             Manager manager;
 
             using (var fileProperties = new StreamReader(new FileStream("properties.json", FileMode.Open)))
@@ -35,9 +32,9 @@ namespace DTuriasConnectorTwitter
 
                 foreach (var message in search.messagesToSearch)
                 {
-                    var messageTask = new MessageTask(manager, message);
-                    Thread messageTaskThread = new Thread(new ThreadStart(messageTask.Run));
-                    messageTaskThread.Start();
+                    var tweetTask = new TweetTask(manager, message);
+                    Thread tweetTaskThread = new Thread(new ThreadStart(tweetTask.Run));
+                    tweetTaskThread.Start();
                 }
 
 

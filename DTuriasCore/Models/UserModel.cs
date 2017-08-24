@@ -1,6 +1,8 @@
-﻿namespace DTuriasCore.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DTuriasCore.Models
 {
-    public class User
+    public class UserModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
@@ -10,7 +12,7 @@
         {
             return $@"
 ScreenName: {ScreenName}
-   Name: {Name}
+    Name: {Name}
 ";
         }
     }

@@ -11,8 +11,8 @@ namespace DTuriasData.Models
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
-        public DbSet<Tweet> Tweets { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Place> Places { get; set; }
+        public DbSet<TweetModel> Tweets { get; set; }
+        public DbSet<UserModel> Users { get; set; }
+        public DbSet<PlaceModel> Places { get; set; }
     }
 }

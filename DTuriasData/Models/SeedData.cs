@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DTuriasCore.Models;
+using System;
 
 namespace DTuriasData.Models
 {
@@ -7,20 +8,54 @@ namespace DTuriasData.Models
         public static void SeedDatabase(DataContext context)
         {
             context.Database.Migrate();
-            context.TodoItems.Add(new TodoItem { Name = "Item1" });
-            context.Tweets.Add(new Tweet { Text = "HOLA OH" });
-            var u = new User()
+
+            TweetModel tweet = new TweetModel()
             {
-                Name = "JJ"
+                CreatedAt = new System.DateTime(),
+                FavoriteCount = 10,
+                Language = "English",
+                PossiblySensitive = true,
+                RetweetCount = 25,
+                Text = "Este es un Tweet de ejemplo",
+                Url = "http://www.google.com"
             };
-            var t = new Tweet()
+
+            UserModel user = new UserModel()
             {
-                Text = "pruebaaaa",
-                User = u
+                Name = "Vicente",
+                ScreenName = "viegd"
             };
-            context.Tweets.Add(t);
-            context.Users.Add(new User { Name = "VICENTE" });
-            context.Places.Add(new Place { Name = "MADRID " });
+
+            tweet.CreatedBy = user;
+            context.Users.Add(user);
+
+            TweetModel tweet2 = new TweetModel()
+            {
+                CreatedAt = DateTime.Now,
+                FavoriteCount = 10,
+                Language = "English",
+                PossiblySensitive = true,
+                RetweetCount = 25,
+                Text = "Este es un Tweet de ejemplo",
+                Url = "http://www.google.com"
+            };
+
+            tweet2.CreatedBy = user;
+
+            /* context.TodoItems.Add(new TodoItem { Name = "Item1" });
+             context.Tweets.Add(new Tweet { Text = "HOLA OH" });
+             var u = new User()
+             {
+                 Name = "JJ"
+             };
+             var t = new Tweet()
+             {
+                 Text = "pruebaaaa",
+                 User = u
+             };*/
+            context.Tweets.Add(tweet);
+            /*context.Users.Add(new User { Name = "VICENTE" });
+            //context.Places.Add(new Place { Name = "MADRID " });*/
             context.SaveChanges();
         }
 

@@ -11,8 +11,8 @@ using System;
 namespace DTuriasData.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20170819155137_4")]
-    partial class _4
+    [Migration("20170822081438_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,12 @@ namespace DTuriasData.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("CountryCode");
+
+                    b.Property<string>("FullName");
 
                     b.Property<string>("Name");
 
@@ -52,9 +58,31 @@ namespace DTuriasData.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Captured");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("FavoriteCount");
+
+                    b.Property<string>("Language");
+
+                    b.Property<long?>("PlaceId");
+
+                    b.Property<bool>("PossiblySensitive");
+
+                    b.Property<int>("RetweetCount");
+
                     b.Property<string>("Text");
 
+                    b.Property<string>("Url");
+
+                    b.Property<long?>("User");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PlaceId");
+
+                    b.HasIndex("User");
 
                     b.ToTable("Tweets");
                 });
@@ -66,9 +94,22 @@ namespace DTuriasData.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("ScreenName");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DTuriasCore.Models.Tweet", b =>
+                {
+                    b.HasOne("DTuriasCore.Models.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId");
+
+                    b.HasOne("DTuriasCore.Models.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("User");
                 });
 #pragma warning restore 612, 618
         }

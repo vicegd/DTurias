@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DTuriasCore.Models;
-using DTuriasConnectorTwitter.Config;
 using Tweetinvi.Models;
 
 namespace DTuriasConnectorTwitter.Utils
@@ -11,7 +7,7 @@ namespace DTuriasConnectorTwitter.Utils
     {
         public static GeoCode GeoCode(DTuriasConnectorTwitter.Config.Location location)
         {
-            if (location.latitude == 0.0 && location.longitude == 0.0)
+            if (location.latitude == 0 && location.longitude == 0)
             {
                 return null;
             }

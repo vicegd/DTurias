@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using DTuriasData.Models;
 using Microsoft.Extensions.Logging;
 using System;
+using DTuriasData.Utils;
+using DTuriasData.Controllers;
 
 namespace DTuriasData
 {
@@ -22,6 +24,17 @@ namespace DTuriasData
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddLogging(builder => builder                                               
+                            .AddFilter("TweetValuesController", LogLevel.Trace)
+                            .AddFilter("Microsoft", LogLevel.Error)
+                            .AddFilter("Microsoft.EntityFrameworkCore.Infrastructure", LogLevel.Error)
+                            .AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Error)
+                            .AddFilter("System", LogLevel.Error)
+                            .AddFilter("Engine", LogLevel.Error)
+                            //.AddFilter("Default", LogLevel.Error)
+                            .AddConsole());
+                            //.AddFilter(LoggingEvents.RESTFulAPI)
+                            //.AddDebug());
             services.AddMvc();
         }
 
@@ -36,8 +49,8 @@ namespace DTuriasData
             app.UseMvc();
 
             //Comment before creating a migration
-            var dataContext = serviceProvider.GetService<DataContext>();
-            Models.SeedData.SeedDatabase(dataContext);
+            //var dataContext = serviceProvider.GetService<DataContext>();
+            //Models.SeedData.SeedDatabase(dataContext);
         }
     }
 }
