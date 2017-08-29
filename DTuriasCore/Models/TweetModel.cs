@@ -9,10 +9,17 @@ namespace DTuriasCore.Models
     public class TweetModel
     {
         public long Id { get; set; }
+       // [ForeignKey("DTuriasUserModel")]
+        public DTuriasUserModel DTuriasUser { get; set; }
         [DataType(DataType.DateTime)]
+       // [ForeignKey("UserModel")]
+        public UserModel CapturedBy { get; set; }
         public DateTime CreatedAt { get; set; }
+       // [ForeignKey("UserModel")]
+        public UserModel CreatedBy { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime Captured { get; set; }
+        public PlaceModel Place { get; set; }
         public CoordinateModel Coordinates { get; set; }
         public int FavoriteCount { get; set; }
         public bool Favorited { get; set; }
@@ -27,22 +34,20 @@ namespace DTuriasCore.Models
         public int RetweetCount { get; set; }
         public bool Retweeted { get; set; }
         public long RetweetedTweet { get; set; }
+        [ForeignKey("SentimentModel")]
+        public SentimentModel Sentiment { get; set; }
         public string Source { get; set; }
         public string Text { get; set; }
         public string Url { get; set; }
-
-
-        [ForeignKey("User")]
-        public UserModel CreatedBy { get; set; }
-        public PlaceModel Place { get; set; }
 
         public override string ToString()
         {
             return $@"     
 Text: {Text}
     FullText: {FullText}
+    DTuriasUser: {DTuriasUser.Nick}
     Source: {Source}
-    CreatedAt: {CreatedAt} - Captured: {Captured}
+    CreatedAt: {CreatedAt} - Captured: {Captured} by {CapturedBy.ScreenName}
     Language: {Language}
     HashTags: {PrintHashTags()}
     IsTweetPublished: {IsTweetPublished} - IsTweetDestroyed: {IsTweetDestroyed}
@@ -54,6 +59,7 @@ Text: {Text}
     User: {CreatedBy.ScreenName} ({CreatedBy.Name})
     Place: {Place?.FullName ?? "-"} ({Place?.Country ?? "-"})
     Coordinates: ({Coordinates?.Latitude ?? 0.0}, {Coordinates?.Longitude ?? 0.0})
+    Sentiment: {Sentiment.State}
 ";
         }
 

@@ -25,8 +25,7 @@ namespace DTuriasConnectorTwitter.Http
             var accessToken = properties.user.twitter.token;
             var accessTokenSecret = properties.user.twitter.tokenSecret;
 
-            UserId = properties.user.id;
-            UserName = properties.user.name;
+            DTuriasUserNick = properties.user.nick;
             DatabaseUrl = properties.database.url;
 
             Auth.SetUserCredentials(consumerKey, consumerSecret, accessToken, accessTokenSecret);
@@ -39,9 +38,7 @@ namespace DTuriasConnectorTwitter.Http
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public String UserId { get; set; }
-
-        public String UserName { get; set; }
+        public String DTuriasUserNick { get; set; }
 
         public String DatabaseUrl { get; set; }
 

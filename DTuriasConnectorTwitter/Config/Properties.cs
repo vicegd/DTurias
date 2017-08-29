@@ -16,8 +16,7 @@ namespace DTuriasConnectorTwitter.Config
 
     public class User
     {
-        public string id { get; set; }
-        public string name { get; set; }
+        public string nick { get; set; }
         public Twitter twitter { get; set; }
     }
 

@@ -10,6 +10,7 @@ namespace DTuriasCore.Models
     {
         public long Id { get; set; }
         public string Text { get; set; }
+        public virtual TweetModel TweetModel { get; set; } //Navigation
 
         public override string ToString()
         {

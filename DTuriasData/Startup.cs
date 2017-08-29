@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using DTuriasData.Utils;
 using DTuriasData.Controllers;
+using Newtonsoft.Json.Serialization;
 
 namespace DTuriasData
 {
@@ -33,10 +34,15 @@ namespace DTuriasData
                             .AddFilter("Engine", LogLevel.Error)
                             //.AddFilter("Default", LogLevel.Error)
                             .AddConsole());
-                            //.AddFilter(LoggingEvents.RESTFulAPI)
-                            //.AddDebug());
-            services.AddMvc();
+            //.AddFilter(LoggingEvents.RESTFulAPI)
+            //.AddDebug());
+
+            var mvcCore = services.AddMvcCore()
+                .AddCors();
+            mvcCore.AddJsonFormatters(options => options.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
+        // .AddCors();
+    //}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
@@ -46,7 +52,16 @@ namespace DTuriasData
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                builder.AllowCredentials();
+                builder.AllowAnyOrigin(); 
+            });
+
             app.UseMvc();
+
 
             //Comment before creating a migration
             //var dataContext = serviceProvider.GetService<DataContext>();
