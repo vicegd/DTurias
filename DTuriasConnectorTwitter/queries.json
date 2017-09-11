@@ -2,12 +2,16 @@
   "messagesToSearch": [
     {
       "queries": [
-        { "query": "hotel" },
-        { "query": "hostal" }
+        { "query": "hotel good" },
+        { "query": "hotel bad" },
+        { "query": "hotel nice" },
+        { "query": "hotel fantastic" },
+        { "query": "hotel awful" },
+        { "query": "hotel like" }
       ],
       "startIn": 0,
       "endsIn": 864000000,
-      "every": 300000,
+      "every": 600000,
       "location": {
         "latitude": 0.0,
         "longitude": 0.0,
@@ -15,9 +19,9 @@
       },
       "resultType": "MIXED",
       "language": "EN",
-      "since": "2014-01-01",
-      "until": "2018-01-01",
-      "maxResultsPerCycle": 3
+      "since": "2017-01-01",
+      "until": "2020-01-01",
+      "maxResultsPerCycle": 20
     }
   ],
   "placesToSearch": [

@@ -20,8 +20,8 @@ namespace DTuriasConnectorTwitter.Convertions
                 CreatedAt = tweet.CreatedAt,
                 CapturedBy = new UserModel()
                 {
-                    Name = Tweetinvi.User.GetAuthenticatedUser().Name,
-                    ScreenName = Tweetinvi.User.GetAuthenticatedUser().ScreenName
+                    Name = Tweetinvi.User.GetAuthenticatedUser()?.Name ?? "",
+                    ScreenName = Tweetinvi.User.GetAuthenticatedUser()?.ScreenName ?? ""
                 },
                 Captured = DateTime.Now,
                 DTuriasUser = new DTuriasUserModel()

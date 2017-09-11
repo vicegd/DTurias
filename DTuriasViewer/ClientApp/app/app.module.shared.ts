@@ -9,6 +9,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { SentimentFilterComponent } from './components/sentimentFilter/sentimentFilter.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 import { ModelModule } from './components/app/models/model.module';
 
@@ -18,7 +20,9 @@ import { ModelModule } from './components/app/models/model.module';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        SentimentFilterComponent,
+        PaginationComponent,
     ],
     imports: [
         CommonModule,
@@ -30,6 +34,7 @@ import { ModelModule } from './components/app/models/model.module';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'sentiment-filter', component: SentimentFilterComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
