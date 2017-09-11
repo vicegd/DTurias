@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using DTuriasData.Models;
 using DTuriasCore.Models;
 using Microsoft.Extensions.Logging;
-using DTuriasData.Utils;
 
 namespace DTuriasData.Controllers
 {
@@ -13,20 +12,35 @@ namespace DTuriasData.Controllers
         private readonly DataContext context;
         private readonly ILogger _logger;
 
-        public TweetValuesController(DataContext context, ILoggerFactory logger)
+        public TweetValuesController(DataContext context, ILogger<TweetValuesController> logger)
         {
+            _logger = logger;
             this.context = context;
-            this._logger = logger.CreateLogger("TweetValuesController");
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int currentPage, int perPage, int sentiment)
         {
-            var tweets = context.Tweets.Select(t => new {
-                Id = t.Id,
-                Text = t.Text,
-                Sentiment = t.Sentiment.State
-            });
+            IQueryable<TweetModel> selection;
+            if (sentiment == -1)
+            {
+                selection = context.Tweets;
+            }
+            else
+            {
+                selection = context.Tweets
+                    .Where(t => t.Sentiment.State == (SentimentModelEnum)sentiment); 
+            }
+
+            var tweets = selection
+                .OrderBy(row => row.Id)
+                .Skip((currentPage-1)*perPage)
+                .Take(perPage)
+                .Select(t => new {
+                    Id = t.Id,
+                    Text = t.Text,
+                    Sentiment = t.Sentiment.State
+                });
 
             if (tweets == null)
             {
@@ -34,6 +48,33 @@ namespace DTuriasData.Controllers
             }
 
             return Ok(tweets);
+        }
+
+        [HttpGet("count")]
+        public IActionResult GetNumber()
+        {
+            var number = context.Tweets.Count();
+            return Ok(number);
+        }
+
+        [HttpGet("sentiment")]
+        public IActionResult GetSentiments()
+        {
+            var both = context.Tweets.Where(t => t.Sentiment.State == SentimentModelEnum.BOTH).Count();
+            var negative = context.Tweets.Where(t => t.Sentiment.State == SentimentModelEnum.NEGATIVE).Count();
+            var neutral = context.Tweets.Where(t => t.Sentiment.State == SentimentModelEnum.NEUTRAL).Count();
+            var positive = context.Tweets.Where(t => t.Sentiment.State == SentimentModelEnum.POSITIVE).Count();
+            var undefined = context.Tweets.Where(t => t.Sentiment.State == SentimentModelEnum.UNDEFINED).Count();
+
+            var result = new
+            {
+                both = both,
+                negative = negative,
+                neutral = neutral,
+                positive = positive,
+                undefined = undefined,
+            };
+            return Ok(result);
         }
 
         [HttpGet("{id}", Name = "GetTweet")]
@@ -57,8 +98,6 @@ namespace DTuriasData.Controllers
             {
                return BadRequest();
             }
-
-            //_logger.LogInformation(LoggingEvents.RESTFulAPI, "TESTING LOGGING");
 
             var capturedBy = context.Users.FirstOrDefault(u => u.ScreenName == tweetModel.CapturedBy.ScreenName);
             if (capturedBy != null)

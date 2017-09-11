@@ -1,0 +1,10 @@
+﻿<div class="m-1">
+    <select class="form-control" (change)="setCurrentSentiment($event.target.value)">
+        <option value="-1" [selected]="currentSentiment == -1">Show all the tweets</option>
+        <option value="0" [selected]="currentSentiment == 0">Positive</option>
+        <option value="1" [selected]="currentSentiment == 1">Negative</option>
+        <option value="2" [selected]="currentSentiment == 2">Neutral</option>
+        <option value="3" [selected]="currentSentiment == 3">Both</option>
+        <option value="4" [selected]="currentSentiment == 4">Undefined</option>
+    </select>
+</div>

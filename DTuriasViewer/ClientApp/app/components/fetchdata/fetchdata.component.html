@@ -2,6 +2,14 @@
 
 <p *ngIf="!tweets"><em>Loading...</em></p>
 
+<div class='row'>
+    <div class='col-sm-9'>
+    </div>
+    <div class='col-sm-3'>
+        <sentiment-filter></sentiment-filter>
+    </div>
+</div>
+
 <table class='table' *ngIf="tweets">
     <thead>
         <tr>
@@ -20,12 +28,17 @@
                     <option value="0" [selected]="tweet.sentiment == 0">Positive</option>
                     <option value="1" [selected]="tweet.sentiment == 1">Negative</option>
                     <option value="2" [selected]="tweet.sentiment == 2">Neutral</option>
-                    <option value="3" [selected]="tweet.sentiment == 3">Both</option>
+                    <option value="3" [selected]="tweet.sentiment == 3">Positive and Negative</option>
                     <option value="4" [selected]="tweet.sentiment == 4">Undefined</option>
                 </select>
             </td>
-            <td><button class="btn btn-primary btn-sm" (click)="deleteTweet(tweet.id)">Delete
-            </button></td>
+            <td><button class="btn btn-primary btn-sm" (click)="deleteTweet(tweet.id)">Delete</button></td>
         </tr>
     </tbody>
 </table>
+
+<div class='row'>
+    <div class='col-sm-12'>
+        <pagination></pagination>
+    </div>
+</div>

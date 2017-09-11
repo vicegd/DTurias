@@ -1,29 +1,39 @@
-﻿//import { Product } from "./product.model";
-import { Injectable } from "@angular/core";
+﻿import { Injectable } from "@angular/core";
 import { Http, RequestMethod, Request, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
-//import { Filter } from "./configClasses.repository";
+import { Filter, Pagination } from "./configClasses.repository";
 import { Tweet } from "./tweet.model";
 
 const tweetsUrl = "http://localhost:54781/api/tweets";
-//const suppliersUrl = "/api/suppliers";
 
 @Injectable()
 export class Repository {
     tweets: Tweet[];
-    //private filterObject = new Filter();
+    count: number;
+    private filterObject = new Filter();
+    private paginationObject = new Pagination();
 
     constructor(private http: Http) {
-        //this.filter.category = "soccer";
-        //this.filter.related = true;
         this.getTweets();
     }
 
-
     getTweets() {
-        this.sendRequest(RequestMethod.Get, tweetsUrl)
-            .subscribe(response => this.tweets = response);
+        let url = tweetsUrl + "?currentPage=" + this.pagination.currentPage + "&perPage=" + this.pagination.perPage;
+
+        if (this.filter.sentiment) {
+            url += "&sentiment=" + this.filter.sentiment;
+        }
+
+        this.sendRequest(RequestMethod.Get, url)
+            .subscribe(response => {
+                this.tweets = response
+            });
+
+        this.sendRequest(RequestMethod.Get, tweetsUrl + "/count")
+            .subscribe(response => {
+                this.count = response;
+            });
     }
 
     deleteTweet(id: number) {
@@ -31,6 +41,11 @@ export class Repository {
             .subscribe(response => {
                 this.getTweets();
             });
+
+        /*if (this.count <= ((this.pagination.currentPage * this.pagination.perPage) - this.pagination.perPage)) {
+            this.pagination.currentPage -= 1;
+            this.getTweets();
+        }*/
     }
 
     updateTweet(id: number, sentiment: number) {
@@ -149,8 +164,13 @@ export class Repository {
     product: Product;
     products: Product[];
     suppliers: Supplier[] = [];
+    */
 
     get filter(): Filter {
         return this.filterObject;
-    }*/
+    }
+
+    get pagination(): Pagination {
+        return this.paginationObject;
+    }
 }
